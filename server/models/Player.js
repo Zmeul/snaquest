@@ -13,11 +13,16 @@ var Player = Backbone.Model.extend({
             {x : 0, y : 0}
         ];
         var direction = { x : 1, y : 0};
+        
+        var avalilableColors = new Array("#FF0065","#00FF65","#0065FF");
+            
+        var color = avalilableColors[Math.floor(Math.random()*avalilableColors.length)];
 
         this.set({
             id : attributes.socket.id,
             parts : parts,
-            direction : direction
+            direction : direction,
+            color : color
         });
     },
 
@@ -83,7 +88,8 @@ var Player = Backbone.Model.extend({
             id : this.id,
             parts : this.attributes.parts,
             direction : this.attributes.direction,
-            username : this.attributes.username
+            username : this.attributes.username,
+            color : this.attributes.color
         };
     }
 

@@ -122,7 +122,7 @@ GameServer.prototype = {
             data.board = this.board.toJSON();
         }
         if (this.updateDataFields.scores) {
-            data.scores = this.players.invoke("pick", "username", "score", "maxScore");
+            data.scores = this.players.invoke("pick", "username", "score", "maxScore", "color");
         }
         this.updateDataFields = {players : true};
         return data;
@@ -150,7 +150,7 @@ GameServer.prototype = {
         this.stopIntervals();
         console.log("start intervals");
         this.gameLoopIntervalesId = setInterval(_.bind(this.gameLoop, this), 100);
-        this.addFoodIntervalId = setInterval(_.bind(this.addFood, this), 3000);
+        this.addFoodIntervalId = setInterval(_.bind(this.addFood, this), 700);
     },
 
     stopIntervals : function () {

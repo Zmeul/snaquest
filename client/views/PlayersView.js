@@ -11,7 +11,8 @@
         },
 
         color : function (player) {
-            return player.get('username') === Game.username ? "#00FEFF" : "#FF0065";
+            //console.log(player);
+            return player.get('username') === Game.username ? "#00FEFF" : player.get('color');
         },
 
         draw : function () {

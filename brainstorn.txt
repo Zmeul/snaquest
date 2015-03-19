@@ -1,0 +1,18 @@
+* food 
+	- that ads +3, +5 (not only 1)
+	- that makes you slower / faster
+	- that generally activates/modifies an attribute (see features)
+
+* AI bots 
+	- find.closest/random food  > change dir twards food while exists
+	- find random player - change dir twards player
+
+* features
+	- limited lifes per round
+	- limited time per round
+	- food magnet
+	- maps with obstacles 
+	- permanent global/weekly leaderboard
+	- permanent item inventory (for later purchases)
+	- energy - be able to play only a few times a day (so you don't burn out all the fun + control server load)
+

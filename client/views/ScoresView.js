@@ -14,9 +14,9 @@
             console.log(this.collection);
             _.each(scores, function (score) {
                 
-                score.class = score.username === Game.username ? "player" : "enemy";
+               //score.class = score.username === Game.username ? "player" : "enemy";
                 score.color = score.username === Game.username ? "#F3F3F3" : score.color;
-                console.log(score);
+               // console.log(score);
             });
             scores = _.sortBy(scores, function (score) {
                 return -score.maxScore;

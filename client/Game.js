@@ -7,10 +7,10 @@
         this.username = options.username;
         this.$el = $(options.el);
 
-        this.board = new Backbone.Model();
-        this.players = new Backbone.Collection();
-        this.food = new Backbone.Collection();
-        this.scores = new Backbone.Collection();
+        this.board      = new Backbone.Model();
+        this.players    = new Backbone.Collection();
+        this.food       = new Backbone.Collection();
+        this.scores     = new Backbone.Collection();
 
         this.boardCanvasCtx = this.$el.find('.boardCanvas')[0].getContext("2d");
         this.playersCanvasCtx = this.$el.find('.playersCanvas')[0].getContext("2d");
@@ -29,7 +29,7 @@
         var socket = io.connect('/');
         var self = this;
 
-        socket.emit('addPlayer', this.username);
+        socket.emit('addPlayer', this.username)
 
         socket.on('update', function (data) {
             if (data.board) {
@@ -40,6 +40,7 @@
             }
             if (data.food) {
                 self.food.reset(data.food);
+                console.log(data.food);
             }
             if (data.scores) {
                 self.scores.reset(data.scores);

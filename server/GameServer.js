@@ -90,7 +90,7 @@ GameServer.prototype = {
 
             if (collidedFood) {
                 this.foodCollection.remove(collidedFood);
-                this.players.at(i).eat();
+                this.players.at(i).eat(collidedFood);
             }
 
             var collidedPlayer = _.find(playersParts, function (parts, j) {
@@ -105,6 +105,7 @@ GameServer.prototype = {
 
             if (collidedPlayer) {
                 this.players.at(i).die();
+                //TODO increase kills/deaths score
             }
 
         }, this);
@@ -140,16 +141,22 @@ GameServer.prototype = {
 
     addFood : function () {
         if (this.foodCollection.length < 10) {
-            var x = _.random(0, this.board.get('x') - 1);
-            var y = _.random(0, this.board.get('y') - 1);
-            this.foodCollection.add({x : x, y : y});
+            var x       = _.random(0, this.board.get('x') - 1);
+            var y       = _.random(0, this.board.get('y') - 1);
+            var type    = 1;
+            var chance=_.random(0,100);
+            if (chance <= 10)                   { type = 2; }
+            else if(chance >10 && chance <=15)  { type = 3; }
+            else if(chance >15 && chance <=20)  { type = 4; }
+            
+            this.foodCollection.add({x : x, y : y, type: type});
         }
     },
 
     startIntervals : function () {
         this.stopIntervals();
         console.log("start intervals");
-        this.gameLoopIntervalesId = setInterval(_.bind(this.gameLoop, this), 100);
+        this.gameLoopIntervalesId = setInterval(_.bind(this.gameLoop, this), 50);
         this.addFoodIntervalId = setInterval(_.bind(this.addFood, this), 700);
     },
 

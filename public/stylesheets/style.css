@@ -8,10 +8,17 @@ body {
 .canvasContainer {
     position: relative;
     width: 501px;
-    float: left;
+    /*float: left; */
+    display: inline-block;
+    vertical-align: top;
+}
+
+.game {
+    width: 730px;
 }
 
 .scoresContainer {
+    border: 1px solid #fff;
     width: 200px;
     float: left;
     text-align: center;
@@ -43,4 +50,21 @@ body {
 
 .playersCanvas {
     z-index: 1;
+}
+
+.sidebar {
+    display: inline-block;
+    vertical-align: top;
+    width: 200px;
+}
+
+.controls {
+    float: right;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.controls input[type="button"] {
+    width: 70px;
+    height: 70px;
 }

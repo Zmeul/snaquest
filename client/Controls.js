@@ -20,6 +20,33 @@
         start : function () {
             $(document).on('keydown.gameControl', _.bind(this.keydown, this));
             $(document).on('keyup.gameControl', _.bind(this.keyup, this));
+            
+            $("#btn_up").click(function(){  
+                var e = $.Event('keydown');  
+                e.which = 38;               
+                $(document).trigger(e);
+            });
+            
+            $("#btn_down").click(function(){  
+                var e = $.Event('keydown');  
+                e.which = 40;               
+                $(document).trigger(e);
+            });
+            
+            $("#btn_left").click(function(){  
+                var e = $.Event('keydown');  
+                e.which = 37;               
+                $(document).trigger(e);
+            });
+            
+            $("#btn_right").click(function(){  
+                var e = $.Event('keydown');  
+                e.which = 39;               
+                $(document).trigger(e);
+            });
+            
+            
+            
         },
 
         stop : function () {

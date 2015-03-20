@@ -11,7 +11,7 @@
 
         render : function () {
             var scores = this.collection.toJSON();
-            console.log(this.collection);
+            //console.log(this.collection);
             _.each(scores, function (score) {
                 
                //score.class = score.username === Game.username ? "player" : "enemy";

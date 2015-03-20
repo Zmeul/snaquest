@@ -40,7 +40,7 @@
             }
             if (data.food) {
                 self.food.reset(data.food);
-                console.log(data.food);
+                //console.log(data.food);
             }
             if (data.scores) {
                 self.scores.reset(data.scores);

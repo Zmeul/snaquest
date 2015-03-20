@@ -21,43 +21,33 @@
             $(document).on('keydown.gameControl', _.bind(this.keydown, this));
             $(document).on('keyup.gameControl', _.bind(this.keyup, this));
             
-            $("#btn_up").click(function(){  
-                var e_up = $.Event('keydown');  
-                e_up.which = 38;               
-                $(document).trigger(e_up);
-            });
+            function triggerKeydown(key){
+                var e= $.Event('keydown');
+                e.which = key;               
+                $(document).trigger(e);
+            }
             
-            $("#btn_down").click(function(){  
-                var e_down = $.Event('keydown');  
-                e_down.which = 40;               
-                $(document).trigger(e_down);
-            });
-            
-            $("#btn_left").click(function(){  
-                var e_left = $.Event('keydown');  
-                e_left.which = 37;               
-                $(document).trigger(e_left);
-            });
-            
-            $("#btn_right").click(function(){  
-                var e_down = $.Event('keydown');  
-                e_down.which = 39;               
-                $(document).trigger(e_right);
-            });
-            
+            $("#btn_up").click(function(){      triggerKeydown(38) });
+            $("#btn_down").click(function(){    triggerKeydown(40) });
+            $("#btn_left").click(function(){    triggerKeydown(37) }); 
+            $("#btn_right").click(function(){   triggerKeydown(39) });
+
             //--- Swipe test
             document.addEventListener('touchstart', handleTouchStart, false);        
             document.addEventListener('touchmove', handleTouchMove, false);
 
             var xDown = null;                                                        
-            var yDown = null;                                                        
-
-            function handleTouchStart(evt) {                                         
+            var yDown = null;      
+           
+            function handleTouchStart(evt) {     
+                console.log('touch-start');
                 xDown = evt.touches[0].clientX;                                      
                 yDown = evt.touches[0].clientY;                                      
             };                                                
 
             function handleTouchMove(evt) {
+                console.log('touch-move');
+                
                 if ( ! xDown || ! yDown ) {
                     return;
                 }
@@ -71,18 +61,18 @@
                 if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
                     if ( xDiff > 0 ) {
                         /* left swipe */ 
-                        $(document).trigger(e_left);
+                        triggerKeydown(37);
                     } else {
                         /* right swipe */
-                        $(document).trigger(e_right);
+                        triggerKeydown(39);
                     }                       
                 } else {
                     if ( yDiff > 0 ) {
                         /* up swipe */ 
-                        $(document).trigger(e_up);
+                        triggerKeydown(38);
                     } else { 
                         /* down swipe */
-                        $(document).trigger(e_down);
+                        triggerKeydown(40);
                     }                                                                 
                 }
                 /* reset values */
